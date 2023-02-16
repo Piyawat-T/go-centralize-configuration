@@ -1,0 +1,3 @@
+### Home
+GET http://localhost:8100/v1/ping
+Content-Type: application/json
