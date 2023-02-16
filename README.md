@@ -1,2 +1,2 @@
 # go-centralize-configuration
-Centralize Configuration like Sprint Cloud
+Centralize Configuration like Spring Cloud
