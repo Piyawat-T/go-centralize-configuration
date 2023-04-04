@@ -27,7 +27,7 @@ func TestGetProperties(t *testing.T) {
 			},
 		}
 
-		mockPropertiesUsecase := new(mocks.PropertiesUsecase)
+		mockPropertiesUsecase := new(mocks.PropertiesUseCase)
 		mockPropertiesUsecase.On("GetProperties", mock.Anything).Return(mockProperties, nil)
 
 		cont := &controller.PropertiesController{
@@ -50,7 +50,7 @@ func TestGetProperties(t *testing.T) {
 	})
 
 	t.Run("error", func(t *testing.T) {
-		mockPropertiesUsecase := new(mocks.PropertiesUsecase)
+		mockPropertiesUsecase := new(mocks.PropertiesUseCase)
 		customErr := errors.New("Unexpected")
 		mockPropertiesUsecase.On("GetProperties", mock.Anything).Return(nil, customErr)
 
@@ -86,7 +86,7 @@ func TestGetConfiguration(t *testing.T) {
 			},
 		}
 
-		mockPropertiesUsecase := new(mocks.PropertiesUsecase)
+		mockPropertiesUsecase := new(mocks.PropertiesUseCase)
 		mockPropertiesUsecase.On(
 			"GetByApplicationAndProfile",
 			mock.Anything,
@@ -114,7 +114,7 @@ func TestGetConfiguration(t *testing.T) {
 	})
 
 	t.Run("error", func(t *testing.T) {
-		mockPropertiesUsecase := new(mocks.PropertiesUsecase)
+		mockPropertiesUsecase := new(mocks.PropertiesUseCase)
 		customErr := errors.New("Unexpected")
 		mockPropertiesUsecase.On(
 			"GetByApplicationAndProfile",
