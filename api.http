@@ -1,3 +1,11 @@
 ### Home
 GET http://localhost:8100/v1/ping
 Content-Type: application/json
+
+### Get Properties
+GET http://localhost:8100/v1/properties
+Content-Type: application/json
+
+### Get Default
+GET http://localhost:8100/go-centralize-configuration/deposit/default
+Content-Type: application/json
