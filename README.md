@@ -3,4 +3,4 @@ Centralize Configuration like Spring Cloud
 
 Run `go run cmd/main.go`
 
-Run `go test ./...`
+go test ./... -coverprofile=coverage.out -covermode=count -json > report.json
