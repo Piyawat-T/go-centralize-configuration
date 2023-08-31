@@ -40,10 +40,7 @@ func (controller *PropertiesController) GetConfiguration(c *gin.Context) {
 
 	ctx := c.Request.Context()
 	log := otelzap.L()
-	log.Ctx(ctx).Error("Hello from zap",
-		zap.Error(errors.New("Hello World!")),
-		zap.String("foo", "bar"))
-	log.DebugContext(ctx, "hi")
+	log.DebugContext(ctx, "Start Get Configuration")
 
 	properties, err := controller.PropertiesUsecase.GetByApplicationAndProfile(c, application, profile)
 	if err != nil {

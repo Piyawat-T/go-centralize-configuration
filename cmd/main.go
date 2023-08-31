@@ -8,6 +8,7 @@ import (
 	routeV1 "github.com/Piyawat-T/go-centralize-configuration/api/route/v1"
 	"github.com/Piyawat-T/go-centralize-configuration/bootstrap/tracer"
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 
 	"github.com/Piyawat-T/go-centralize-configuration/bootstrap"
 
@@ -20,7 +21,7 @@ func main() {
 	ctx := context.Background()
 	tp := tracer.NewTraceProvider()
 	tc := tp.Tracer("opentelemetry-logger/main")
-	ctx = tracer.NewContext(ctx, tc)
+	tracer.NewContext(ctx, tc)
 
 	app := bootstrap.App()
 
@@ -30,8 +31,10 @@ func main() {
 
 	timeout := time.Duration(env.ContextTimeout) * time.Second
 
-	logger := otelzap.New(zap.NewExample(),
-		otelzap.WithTraceIDField(true))
+	logger := otelzap.New(zap.Must(zap.NewDevelopment()),
+		otelzap.WithTraceIDField(true),
+		otelzap.WithMinLevel(zapcore.DebugLevel),
+	)
 	defer logger.Sync()
 
 	undo := otelzap.ReplaceGlobals(logger)
