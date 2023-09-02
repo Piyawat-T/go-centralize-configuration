@@ -8,6 +8,7 @@ import (
 	"github.com/Piyawat-T/go-centralize-configuration/domain"
 	"github.com/gin-gonic/gin"
 	"github.com/uptrace/opentelemetry-go-extra/otelzap"
+	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
 )
 
@@ -41,6 +42,9 @@ func (controller *PropertiesController) GetConfiguration(c *gin.Context) {
 	ctx := c.Request.Context()
 	log := otelzap.L()
 	log.DebugContext(ctx, "Start Get Configuration")
+
+	span := trace.SpanFromContext(ctx)
+	log.DebugContext(ctx, span.SpanContext().TraceID().String())
 
 	properties, err := controller.PropertiesUsecase.GetByApplicationAndProfile(c, application, profile)
 	if err != nil {
