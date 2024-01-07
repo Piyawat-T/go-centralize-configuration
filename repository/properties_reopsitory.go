@@ -27,6 +27,6 @@ func (ur *propertiesRepository) Fetch(c context.Context) ([]domain.Properties, e
 
 func (repository *propertiesRepository) FetchByApplicationAndProfile(c context.Context, application string, profile string) ([]domain.Properties, error) {
 	var properties []domain.Properties
-	err := repository.database.Find(&properties, "application = ? AND profile = ?", "deposit", "default")
+	err := repository.database.Find(&properties, "application = ? AND profile = ?", application, profile)
 	return properties, err
 }
