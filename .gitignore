@@ -16,3 +16,6 @@
 report.json
 .scannerwork/
 .env
+*.yaml
+install/database/liquibase.properties
+install/database/liquibase.endstage.flow
